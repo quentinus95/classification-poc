@@ -1,0 +1,17 @@
+{
+  "name": "classification-poc",
+  "description": "Server for the classification app.",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "and": "0.0.3",
+    "apollo-server": "^2.0.0-rc.2",
+    "graphql": "^0.13.2",
+    "mongodb": "^3.0.10"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "mocha": "^5.2.0"
+  }
+}
