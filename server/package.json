@@ -4,8 +4,10 @@
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js --inspect"
+  },
   "dependencies": {
-    "and": "0.0.3",
     "apollo-server": "^2.0.0-rc.2",
     "graphql": "^0.13.2",
     "mongodb": "^3.0.10"

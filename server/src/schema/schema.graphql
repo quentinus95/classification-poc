@@ -1,3 +1,7 @@
+type Query {
+    collections: [Collection]
+}
+
 enum Shape {
     POLYGON
     CIRCLE
