@@ -4,11 +4,12 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  collections: []
+  collections: [],
+  user: null
 }
 
 const getters = {
-
+  currentUser: state => state.user
 }
 
 const mutations = {
