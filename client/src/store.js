@@ -10,7 +10,8 @@ const state = {
 
 const getters = {
   currentUser: state => state.user,
-  collections: state => state.collections
+  collections: state => state.collections,
+  collection: state => name => state.collections.find(collection => collection.name === name)
 }
 
 const mutations = {

@@ -6,7 +6,7 @@
     </p>
     <ul>
       <li v-for="collection of collections">
-        <a :href="`/collection/${collection.name}`">{{ collection.name }}</a>
+        <router-link :to="{ name: 'collection', params: { name: collection.name } }">{{ collection.name }}</router-link>
       </li>
     </ul>
   </section>
