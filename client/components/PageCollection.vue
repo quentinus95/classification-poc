@@ -7,6 +7,9 @@
     </nav>
     <article v-if="collection">
       <h2>{{ collection.name }}</h2>
+      <p class="alert alert-warning" v-if="missingLabels">
+        Some labels are missing!
+      </p>
       <ul>
         <li v-for="image of images">
           <router-link :to="{ name: 'image', params: { collection: name, image: image.name } }">
@@ -35,6 +38,9 @@
     computed: {
       collection () {
         return this.$store.getters.collection(this.name)
+      },
+      missingLabels () {
+        return this.images.findIndex(image => !image.label) !== -1
       }
     },
     async mounted() {
