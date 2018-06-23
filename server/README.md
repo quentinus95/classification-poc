@@ -4,6 +4,6 @@ The servers require the following environment variables to be set (possibly usin
 
 ```sh
 NODE_ENV=development
-MONGO_URL=<Url to MongoDB>
-MONGO_DB_NAME=<MongoDB database name>
+MONGO_URL=<Url to MongoDB (e.g. mongodb://localhost:27017)>
+MONGO_DB_NAME=<MongoDB database name (e.g. classification-poc)>
 ```

@@ -1,7 +1,7 @@
-const query = require('./query')
+const collections = require('../model/collections')
 
 exports.resolvers = {
   Query: {
-    collections: async () => await query.getCollections()
+    collections: async () => await collections.findAll()
   }
 }

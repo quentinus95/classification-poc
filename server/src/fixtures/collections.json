@@ -1,0 +1,13 @@
+[
+  {
+    "name": "collection1",
+    "images": [
+      {
+        "name": "image1"
+      },
+      {
+        "name": "image2"
+      }
+    ]
+  }
+]

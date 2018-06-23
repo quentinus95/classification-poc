@@ -3,7 +3,10 @@ const kernel = require('./src/kernel')
 
 kernel
   .boot()
-  .listen()
-  .then(({ url }) => {
-    console.log(`Server running at ${url}!`)
+  .then(server => {
+    server
+      .listen()
+      .then(({ url }) => {
+        console.log(`Server running at ${url}!`)
+      })
   })

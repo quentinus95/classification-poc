@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient
 
 let connection = null
 
-function getConnection () {
+exports.getConnection = () => {
   if (connection) {
     return connection
   }
