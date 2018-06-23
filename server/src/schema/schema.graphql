@@ -1,5 +1,6 @@
 type Query {
     collections: [Collection]
+    users: [User]
 }
 
 enum Shape {
@@ -29,10 +30,10 @@ An annotation, used as a label.
 """
 type Annotation {
     name: String
-    author: Author
+    author: User
     type: Shape
 }
 
-type Author {
+type User {
     name: ID
 }
