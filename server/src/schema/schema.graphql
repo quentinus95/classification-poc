@@ -1,5 +1,6 @@
 type Query {
     collections: [Collection]
+    collection(name: ID!): Collection
     users: [User]
 }
 
