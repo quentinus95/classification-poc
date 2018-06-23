@@ -32,8 +32,10 @@
         collectionName: ''
       }
     },
-    async mounted() {
+    beforeMount () {
       this.collectionName = this.$router.currentRoute.params.collection
+    },
+    async mounted() {
       const imageName = this.$router.currentRoute.params.image
 
       const response = await api.sendRequest(`

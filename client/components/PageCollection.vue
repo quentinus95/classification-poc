@@ -10,13 +10,28 @@
       <p class="alert alert-warning" v-if="missingLabels">
         Some labels are missing!
       </p>
+      <h5>
+        Waiting for labeling <span class="badge badge-dark">{{ unlabelledImages.length }}</span>
+      </h5>
       <ul>
-        <li v-for="image of images">
+        <li v-for="image of unlabelledImages">
           <router-link :to="{ name: 'image', params: { collection: name, image: image.name } }">
             {{ image.name }}
           </router-link>
-          <span class="badge badge-info" v-if="image.label">{{ image.label }}</span>
-          <span class="badge badge-danger" v-else>not labelled</span>
+        </li>
+      </ul>
+      <h5>
+        Labelled <span class="badge badge-dark">{{ labelledImages.length }}</span>
+      </h5>
+      <ul>
+        <li v-for="image of labelledImages">
+          <router-link :to="{ name: 'image', params: { collection: name, image: image.name } }">
+            {{ image.name }}
+          </router-link>
+          <span class="badge badge-info" v-if="image.label">
+            {{ image.label }}
+          </span>
+          (labelled by {{ image.label.author.name }}
         </li>
       </ul>
     </article>
@@ -40,7 +55,13 @@
         return this.$store.getters.collection(this.name)
       },
       missingLabels () {
-        return this.images.findIndex(image => !image.label) !== -1
+        return this.unlabelledImages.length > 0
+      },
+      labelledImages () {
+        return this.images.filter(image => image.label)
+      },
+      unlabelledImages () {
+        return this.images.filter(image => !image.label)
       }
     },
     async mounted() {
@@ -53,6 +74,9 @@
               name
               label {
                 name
+                author {
+                  name
+                }
               }
             }
           }
