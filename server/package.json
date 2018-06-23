@@ -16,5 +16,6 @@
     "dotenv": "^6.0.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.17.5"
-  }
+  },
+  "author": "Quentin de Longraye <quentin@dldl.fr>"
 }

@@ -1,6 +1,6 @@
 # Server side
 
-The servers require the following environment variables to be set (possibly using a `.env` file):
+The server requires the following environment variables to be set (possibly using a `.env` file):
 
 ```sh
 NODE_ENV=development
