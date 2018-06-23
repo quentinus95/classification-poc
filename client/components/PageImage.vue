@@ -9,7 +9,7 @@
     </nav>
     <article v-if="image">
       <h3>{{ image.name }}</h3>
-      <p>Image {{ image.name }}</p>
+      <img :src="`${serverHost}/public/${collectionName}/${image.name}.png`" width="100%" />
       <h5>Labels</h5>
       <p>
         Image label (required):
@@ -30,6 +30,11 @@
       return {
         image: null,
         collectionName: ''
+      }
+    },
+    computed: {
+      serverHost () {
+        return process.env.SERVER_HOST
       }
     },
     beforeMount () {

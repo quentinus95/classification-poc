@@ -1,12 +1,12 @@
 require('dotenv').config()
 const kernel = require('./src/kernel')
 
+const port = 4000
+
 kernel
   .boot()
-  .then(server => {
-    server
-      .listen()
-      .then(({ url }) => {
-        console.log(`Server running at ${url}!`)
-      })
+  .then(app => {
+    app.listen(port, () => {
+      console.log(`Server running! Sandbox at http://localhost:${port}/graphiql`)
+    })
   })
