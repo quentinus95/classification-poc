@@ -9,9 +9,10 @@
     </nav>
     <article v-if="image">
       <h3>{{ image.name }}</h3>
-      <div class="selection-editor" :style="`background-image: url(${serverHost}/public/${collectionName}/${image.name}.png)`">
-        <svg-selection />
-      </div>
+      <coordinates-editor
+        :collection="collectionName"
+        :image="image.name"
+      />
       <h5>Labels</h5>
       <p>
         Image label (required):
@@ -26,21 +27,18 @@
 <script>
   import api from '../src/api'
   import SvgSelection from './SvgSelection'
+  import CoordinatesEditor from "./CoordinatesEditor";
 
   export default {
     name: 'page-image',
     components: {
+      CoordinatesEditor,
       SvgSelection
     },
     data () {
       return {
         image: null,
         collectionName: ''
-      }
-    },
-    computed: {
-      serverHost () {
-        return process.env.SERVER_HOST
       }
     },
     beforeMount () {
@@ -64,11 +62,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .selection-editor {
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-</style>

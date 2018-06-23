@@ -24,6 +24,8 @@
         this.pointer.y = e.clientY
 
         this.coordinates.push(this.pointer.matrixTransform(this.$refs.svg.getScreenCTM().inverse()))
+
+        this.$emit('coordinates', this.coordinates)
       }
     },
     mounted () {
