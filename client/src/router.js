@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import PageHome from '../components/PageHome'
 import PageLogin from '../components/PageLogin'
 import PageCollection from '../components/PageCollection'
+import PageImage from '../components/PageImage'
 import store from './store'
 
 Vue.use(VueRouter)
@@ -20,9 +21,14 @@ const router = new VueRouter({
       component: PageLogin
     },
     {
-      path: '/collection/:name',
+      path: '/collection/:collection',
       name: 'collection',
       component: PageCollection
+    },
+    {
+      path: '/collection/:collection/:image',
+      name: 'image',
+      component: PageImage
     }
   ]
 })

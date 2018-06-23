@@ -1,14 +1,23 @@
 <template>
   <section>
-    <p class="small"><router-link :to="{ name: 'home' }">&laquo; Back to collections list</router-link></p>
-    <h2>{{ collection.name }}</h2>
-    <ul>
-      <li v-for="image of images">
-        {{ image.name }}
-        <span class="badge badge-info" v-if="image.label">{{ image.label }}</span>
-        <span class="badge badge-danger" v-else>not labelled</span>
-      </li>
-    </ul>
+    <nav>
+      <p class="small">
+        <router-link :to="{ name: 'home' }">&laquo; Back to collections list</router-link>
+      </p>
+    </nav>
+    <article v-if="collection">
+      <h2>{{ collection.name }}</h2>
+      <ul>
+        <li v-for="image of images">
+          <router-link :to="{ name: 'image', params: { collection: name, image: image.name } }">
+            {{ image.name }}
+          </router-link>
+          <span class="badge badge-info" v-if="image.label">{{ image.label }}</span>
+          <span class="badge badge-danger" v-else>not labelled</span>
+        </li>
+      </ul>
+    </article>
+    <p v-else>Collection is loading...</p>
   </section>
 </template>
 
@@ -29,7 +38,7 @@
       }
     },
     async mounted() {
-      this.name = this.$router.currentRoute.params.name
+      this.name = this.$router.currentRoute.params.collection
 
       const response = await api.sendRequest(`
         query {

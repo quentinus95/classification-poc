@@ -1,6 +1,7 @@
 type Query {
     collections: [Collection]
     collection(name: ID!): Collection
+    image(collection: ID!, image: ID!): Image
     users: [User]
 }
 

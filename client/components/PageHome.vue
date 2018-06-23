@@ -2,11 +2,13 @@
   <section>
     <h2>Home</h2>
     <p>
-      Hi, {{ currentUser }}! Choose the collection you want to work on.
+      Hi, <strong>{{ currentUser }}</strong>! Choose the collection you want to work on.
     </p>
     <ul>
       <li v-for="collection of collections">
-        <router-link :to="{ name: 'collection', params: { name: collection.name } }">{{ collection.name }}</router-link>
+        <router-link :to="{ name: 'collection', params: { collection: collection.name } }">
+          {{ collection.name }}
+        </router-link>
       </li>
     </ul>
   </section>
