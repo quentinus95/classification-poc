@@ -9,15 +9,26 @@ const state = {
 }
 
 const getters = {
-  currentUser: state => state.user
+  currentUser: state => state.user,
+  collections: state => state.collections
 }
 
 const mutations = {
-
+  LOG_IN(state, username) {
+    state.user = username
+  },
+  SET_COLLECTIONS(state, collections) {
+    state.collections = collections
+  }
 }
 
 const actions = {
-
+  logIn: ({ commit }, username) => {
+    commit('LOG_IN', username)
+  },
+  setCollections: ({ commit }, collections) => {
+    commit('SET_COLLECTIONS', collections)
+  }
 }
 
 export default new Vuex.Store({

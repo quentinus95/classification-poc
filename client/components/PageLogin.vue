@@ -16,6 +16,13 @@
       return {
         username: ''
       }
+    },
+    methods: {
+      async identify () {
+        await this.$store.dispatch('logIn', this.username)
+
+        this.$router.push({ name: 'home' })
+      }
     }
   }
 </script>
