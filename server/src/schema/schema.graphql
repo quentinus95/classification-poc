@@ -5,6 +5,11 @@ type Query {
     users: [User]
 }
 
+type Mutation {
+    saveImageLabel(collection: String!, image: String!, author: String!, label: String!): Collection
+    saveImageAnnotation(collection: String!, image: String!, author: String!, label: String!, type: String!, coordinates: String!): Collection
+}
+
 enum Shape {
     POLYGON
     CIRCLE
@@ -34,6 +39,7 @@ type Annotation {
     name: String
     author: User
     type: Shape
+    coordinates: String
 }
 
 type User {

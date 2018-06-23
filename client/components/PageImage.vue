@@ -9,14 +9,17 @@
     </nav>
     <article v-if="image">
       <h3>{{ image.name }}</h3>
+      <p>Changes are saved automatically.</p>
       <coordinates-editor
         :collection="collectionName"
         :image="image.name"
+        :coordinates="image.annotations.map(annotation => annotation.coordinates)"
       />
+      <a href="#" @click.prevent="addAnnotation" class="btn btn-light">Add annotation</a>
       <h5>Labels</h5>
       <p>
         Image label (required):
-        <span class="badge badge-info" v-if="image.label">{{ image.label }}</span>
+        <span class="badge badge-info" v-if="image.label">{{ image.label.name }}</span>
         <span class="badge badge-danger" v-else>Not labelled</span>
       </p>
     </article>
@@ -41,6 +44,14 @@
         collectionName: ''
       }
     },
+    methods: {
+      addAnnotation () {
+        this.image.annotations.push({
+          name: 'Annotation name',
+          coordinates: JSON.stringify([])
+        })
+      }
+    },
     beforeMount () {
       this.collectionName = this.$router.currentRoute.params.collection
     },
@@ -53,6 +64,9 @@
             name
             label {
               name
+            }
+            annotations {
+              coordinates
             }
           }
         }

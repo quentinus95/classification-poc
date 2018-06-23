@@ -3,11 +3,22 @@
     "name": "collection1",
     "images": [
       {
-        "name": "image1"
+        "name": "image1",
+        "annotations": []
       },
       {
-        "name": "image2"
+        "name": "image2",
+        "label": {
+          "name":"Screwdriver",
+          "author": {
+            "name": "Michel"
+          }
+        },
+        "annotations": []
       }
     ]
+  },
+  {
+    "name": "collection2"
   }
 ]

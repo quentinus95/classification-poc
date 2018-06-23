@@ -1,9 +1,9 @@
 <template>
   <svg width="100%" height="300px" @click="addPoint" ref="svg">
-    <circle v-for="coordinate of coordinates" r="3" :cx="coordinate.x" :cy="coordinate.y"
+    <circle v-for="coordinate of currentCoordinates" r="3" :cx="coordinate.x" :cy="coordinate.y"
             style="fill: rgba(270, 128, 128, 1)">
     </circle>
-    <polygon :points="coordinates.map(coordinate => `${coordinate.x},${coordinate.y}`).join(' ')"
+    <polygon :points="currentCoordinates.map(coordinate => `${coordinate.x},${coordinate.y}`).join(' ')"
              style="fill: rgba(270, 128, 128, 0.5)"
     ></polygon>
   </svg>
@@ -12,9 +12,15 @@
 <script>
   export default {
     name: 'svg-selection',
+    props: {
+      coordinates: {
+        type: Array,
+        required: true
+      }
+    },
     data () {
       return {
-        coordinates: [],
+        currentCoordinates: [],
         pointer: null
       }
     },
@@ -23,14 +29,15 @@
         this.pointer.x = e.clientX
         this.pointer.y = e.clientY
 
-        this.coordinates.push(this.pointer.matrixTransform(this.$refs.svg.getScreenCTM().inverse()))
+        this.currentCoordinates.push(this.pointer.matrixTransform(this.$refs.svg.getScreenCTM().inverse()))
 
-        this.$emit('coordinates', this.coordinates)
+        this.$emit('coordinates', this.currentCoordinates)
       }
     },
     mounted () {
       const svg = this.$refs.svg
 
+      this.currentCoordinates = this.coordinates.slice()
       this.pointer = svg.createSVGPoint()
     }
   }

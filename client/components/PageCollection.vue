@@ -29,9 +29,9 @@
             {{ image.name }}
           </router-link>
           <span class="badge badge-info" v-if="image.label">
-            {{ image.label }}
+            {{ image.label.name }}
           </span>
-          (labelled by {{ image.label.author.name }}
+          (labelled by {{ image.label.author.name }})
         </li>
       </ul>
     </article>
