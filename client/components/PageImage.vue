@@ -9,7 +9,9 @@
     </nav>
     <article v-if="image">
       <h3>{{ image.name }}</h3>
-      <img :src="`${serverHost}/public/${collectionName}/${image.name}.png`" width="100%" />
+      <div class="selection-editor" :style="`background-image: url(${serverHost}/public/${collectionName}/${image.name}.png)`">
+        <svg-selection />
+      </div>
       <h5>Labels</h5>
       <p>
         Image label (required):
@@ -23,9 +25,13 @@
 
 <script>
   import api from '../src/api'
+  import SvgSelection from './SvgSelection'
 
   export default {
     name: 'page-image',
+    components: {
+      SvgSelection
+    },
     data () {
       return {
         image: null,
@@ -58,3 +64,11 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .selection-editor {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+</style>
